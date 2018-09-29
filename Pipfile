@@ -4,7 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-python-dotenv = "~=0.9.1"
 
 [dev-packages]
 "flake8" = "~=3.5.0"

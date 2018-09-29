@@ -3,10 +3,10 @@ install:
 	@docker build -t showjackyang/intercom-take-home:latest .
 
 lint:
-	@docker run -v $(shell pwd):/app showjackyang/intercom-take-home:latest make run-lint
+	@docker run -v $(shell pwd):/pipeline/source showjackyang/intercom-take-home:latest make run-lint
 
 test:
-	@docker run -v $(shell pwd):/app showjackyang/intercom-take-home:latest make run-test
+	@docker run -v $(shell pwd):/pipeline/source showjackyang/intercom-take-home:latest make run-test
 
 # to be executed in docker container
 run-test:
