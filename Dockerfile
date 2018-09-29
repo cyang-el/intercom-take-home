@@ -8,8 +8,9 @@ RUN apk add musl-dev
 
 RUN apk add make
 RUN pip install pipenv
-RUN mkdir /app
+RUN mkdir -p /pipeline/source
 
-COPY Pipfile /app/Pipfile
-WORKDIR /app
+COPY Pipfile /pipeline/source/Pipfile
+COPY Pipfile.lock /pipeline/source/Pipfile.lock
+WORKDIR /pipeline/source
 RUN pipenv install --dev

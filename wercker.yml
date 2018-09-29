@@ -1,0 +1,20 @@
+box:
+  id: showjackyang/intercom-take-home:latest
+
+build:
+    steps:
+        - script:
+            name: test-coverage-prep
+            code: |
+              apk add curl
+              apk add git
+              curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+              chmod +x ./cc-test-reporter
+              ./cc-test-reporter before-build
+        - script:
+            name: run tests
+            code: make run-test
+    after-steps:
+        - script:
+          name: test-coverage-publish
+          code: ./cc-test-reporter after-build -t coverage.py

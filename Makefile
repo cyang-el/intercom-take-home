@@ -1,18 +1,20 @@
+# for building on local machine
 install:
-	@docker build -t intercom/take-home:latest .
+	@docker build -t showjackyang/intercom-take-home:latest .
 
 lint:
-	@docker run -v $(shell pwd):/app intercom/take-home:latest make run-lint
+	@docker run -v $(shell pwd):/app showjackyang/intercom-take-home:latest make run-lint
 
 test:
-	@docker run -v $(shell pwd):/app intercom/take-home:latest make run-test
+	@docker run -v $(shell pwd):/app showjackyang/intercom-take-home:latest make run-test
 
-# below are to be executed in container
+# to be executed in docker container
 run-test:
 	make run-clean
 	make run-lint
 	@pipenv run mypy --ignore-missing-imports src
 	@pipenv run py.test --cov=src \
+		--cov-report xml \
                 --cov-report term \
                 --disable-pytest-warnings tests
 
