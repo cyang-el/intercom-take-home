@@ -1,6 +1,7 @@
 import logging
 
 from src.input_consumer import customer
+from src.distance import get_distance
 
 
 logger = logging.getLogger(__name__)
@@ -11,5 +12,5 @@ class Customer(customer):
         logger.info(self)
 
     @property
-    def is_close(self):
+    def is_near(self):
         pass
