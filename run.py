@@ -1,12 +1,15 @@
-import json
 import os
+import json
 import logging
 from functools import partial
-from typing import Generator
 
 from src.customer import Customer
 from src.distance import get_distance
 from src.output_handler import CustomerQueue
+from src.io import (
+    read_input_file,
+    output_queue
+)
 
 
 logging.basicConfig(level=logging.DEBUG)
@@ -22,30 +25,7 @@ def setup_distance_method():
     Customer.radius = float(os.environ['radius'])
 
 
-def read_input_file() -> Generator[str, None, None]:
-    with open(os.environ['input_file'], 'r') as file_:
-        line = file_.readline()
-        while line:
-            yield line
-            line = file_.readline()
-
-
-def output_near_customers(queue):
-    output_filename = os.environ['output_file']
-    with open(output_filename, 'w') as file_:
-        while True:
-            try:
-                file_.write('{}\n'.format(
-                    json.dumps(queue.pop())))
-            except IndexError:
-                logger.info(
-                    f'Done. Check {output_filename} '
-                    'for output.')
-                break
-
-
-if __name__ == '__main__':
-    setup_distance_method()
+def main():
     queue = CustomerQueue()
     for ln in read_input_file():
         customer = Customer(**json.loads(ln))
@@ -53,4 +33,9 @@ if __name__ == '__main__':
             queue.push(
                 name=customer.name,
                 user_id=customer.user_id)
-    output_near_customers(queue)
+    output_queue(queue)
+
+
+if __name__ == '__main__':
+    setup_distance_method()
+    main()
