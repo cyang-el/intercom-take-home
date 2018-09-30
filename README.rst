@@ -10,3 +10,39 @@
    :target: https://codeclimate.com/github/showjackyang/intercom-take-home/test_coverage
    :alt: Test Coverage
 
+
+Prerequisite
+============
+
+- Docker
+
+
+TLDR
+====
+
+Setup
+-----
+1. Copy ``.env.example`` to ``.env``, this includes default file path setup.
+2. Install dependancies via docker:
+
+.. code:: bash
+
+   make install
+
+Test
+----
+.. code:: bash
+
+   make test
+
+Run
+---
+.. code:: bash
+
+   make run
+
+ 
+To change IO file path
+======================
+1. This can be accomplished by changing corresponding environment variable value in the copied ``.env``.
+2. *Please note this path setting has only been tested with POSIX systems.*
