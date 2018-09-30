@@ -28,6 +28,11 @@ def test_customer_init(customer_data):
     assert _customer.latitude == 50
 
 
+def test_customer_init_raise():
+    with pytest.raises(TypeError):
+        Customer(**{'name': 'foo'})
+
+
 def test_customer_raise(customer_data):
     with pytest.raises(NotImplementedError):
         _customer = Customer(**customer_data)

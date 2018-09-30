@@ -28,7 +28,12 @@ def setup_distance_method():
 def main():
     queue = CustomerQueue()
     for ln in read_input_file():
-        customer = Customer(**json.loads(ln))
+        try:
+            customer = Customer(**json.loads(ln))
+        except TypeError:
+            logger.warn(
+                f'Encounter Non compatible data format: {ln}')
+            continue
         if customer.is_near:
             queue.push(
                 name=customer.name,
