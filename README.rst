@@ -27,7 +27,7 @@ here_
 Setup
 -----
 1. Copy ``.env.example`` to ``.env``, this includes default file path setup.
-2. Install dependancies via docker:
+2. Install dependencies via docker:
 
 .. code:: bash
 
