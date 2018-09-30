@@ -20,6 +20,10 @@ Prerequisite
 TLDR
 ====
 
+Solution
+--------
+here_
+
 Setup
 -----
 1. Copy ``.env.example`` to ``.env``, this includes default file path setup.
@@ -46,3 +50,6 @@ To change IO file path
 ======================
 1. This can be accomplished by changing corresponding environment variable value in the copied ``.env``.
 2. *Please note this path setting has only been tested with POSIX systems.*
+
+
+.. _here: https://github.com/showjackyang/intercom-take-home/blob/master/solution.txt
