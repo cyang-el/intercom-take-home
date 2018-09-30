@@ -53,7 +53,7 @@ def cal_distance(
     return earth_radius * get_central_angle(pin, loc)
 
 
-def get_distance(**kwargs) -> float:
+def get_distance(*args, **kwargs) -> float:
     check_lon(kwargs['pin_lon'])
     check_lon(kwargs['lon'])
     check_lat(kwargs['pin_lat'])
